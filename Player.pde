@@ -35,8 +35,12 @@ class Player extends GameObject {
     imageMode(CENTER);
     if (zk) image(psprite1, pos.x, pos.y);
     else image(psprite, pos.x, pos.y);
-    rect(pos.x, pos.y, 2, 2);
     noTint();
+    
+    if (shiftk){
+      fill(255,0,0);
+      ellipse(pos.x, pos.y, 3, 3);
+    }
   }
   
   //Make sprite move according to current velocity
