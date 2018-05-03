@@ -58,7 +58,7 @@ class FireRed extends Gun {
     //a fire(autoattacks)
     //if x is held down then do a fire a boolet (if btimer is up)
     if (zk && btimer == 0) {
-      doubleFire(10); // gap
+      doubleFire(8); // gap
       //Start the timer till next bullet can be fired (in frames)
       btimer = fireRate;
     }

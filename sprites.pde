@@ -1,5 +1,6 @@
 PImage psprite, psprite1;
 PImage cyanball, pinkball, cyanshap, orangeball, redshap;
+PImage blackstream;
 PImage iceshard;
 PImage abbar, hpbar;
 PImage jellyfish;
@@ -10,6 +11,8 @@ void loadSprites() {
   psprite1 = loadImage("aseex/psprite1.png");
   abbar = loadImage("aseex/abbar.png");
   hpbar = loadImage("aseex/hpbar.png");
+  
+  blackstream = loadImage("aseex/blackstream.png");
   
   orangeball = loadImage("aseex/orangeball.png");
   cyanball = loadImage("aseex/cyanball.png");
@@ -24,4 +27,5 @@ void loadSprites() {
   gamebg = loadImage("aseex/gamebg.png");
   menubg = loadImage("aseex/menubg.png");
   longbg = loadImage("aseex/longbg.png");
+  scrollHeight = longbg.height;
 }

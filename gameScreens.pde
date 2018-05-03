@@ -1,4 +1,4 @@
-int scrollHeight = 1472;
+int scrollHeight;
 int currentScroll = 0;
 
 void playScreen() {
@@ -6,8 +6,8 @@ void playScreen() {
   background(255,255,0);
   imageMode(CORNER);
   image(longbg, topX, botY-scrollHeight+currentScroll);
-  image(longbg, topX, botY-scrollHeight+currentScroll+scrollHeight);
-  currentScroll++;
+  image(longbg, topX, botY-scrollHeight+currentScroll-scrollHeight);
+  currentScroll+=10;
   if (currentScroll>scrollHeight) {
     currentScroll = 0;
   }
