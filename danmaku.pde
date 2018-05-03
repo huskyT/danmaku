@@ -1,6 +1,6 @@
 ArrayList<GameObject> engine;
 PImage bg;
-
+String currentScreen = "game"; //Use menu, game, help, instruction, 
 
 boolean upk, downk, rightk, leftk, zk, xk, shiftk;
 Player realPlayer;
@@ -35,7 +35,12 @@ void setup() {
 
 void draw() {
   println(frameRate);
-  playScreen();
+  if (currentScreen == "game") {
+    playScreen();
+  }
+  else if (currentScreen == "menu") {
+    menuScreen();
+  }
 }
 
 void keyPressed() {

@@ -3,7 +3,7 @@ PImage cyanball, pinkball, cyanshap, orangeball, redshap;
 PImage iceshard;
 PImage abbar, hpbar;
 PImage jellyfish;
-PImage gamebg;
+PImage gamebg, menubg, longbg;
 
 void loadSprites() {
   psprite = loadImage("aseex/psprite.png"); //Player frame 1
@@ -22,4 +22,6 @@ void loadSprites() {
   jellyfish = loadImage("aseex/jellyfish.png");
   
   gamebg = loadImage("aseex/gamebg.png");
+  menubg = loadImage("aseex/menubg.png");
+  longbg = loadImage("aseex/longbg.png");
 }
