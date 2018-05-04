@@ -41,6 +41,7 @@ void draw() {
   else if (currentScreen == "menu") {
     menuScreen();
   }
+  transition();
 }
 
 void keyPressed() {
@@ -52,16 +53,8 @@ void keyPressed() {
   if (keyCode == LEFT) leftk = true;
   if (keyCode == SHIFT) shiftk = true;
   if (key == 'r' || key == 'R') {
-    if (playerisdead) {
-      int i = engine.size()-1;
-      while (i >= 0) {
-        engine.remove(i);
-        i--;
-      }
-      realPlayer.hp = realPlayer.maxhp;
-      engine.add(realPlayer);
-      playerisdead = false;
-    }
+    //Reset game if the player is dead
+    resetGame();
   }
 }
 

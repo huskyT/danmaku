@@ -1,13 +1,16 @@
-int scrollHeight = 1472;
+int scrollHeight;
 int currentScroll = 0;
 
 void playScreen() {
   //Redraw background
   background(255,255,0);
   imageMode(CORNER);
+  
+  scrollHeight = longbg.height;
+  
   image(longbg, topX, botY-scrollHeight+currentScroll);
-  image(longbg, topX, botY-scrollHeight+currentScroll+scrollHeight);
-  currentScroll++;
+  image(longbg, topX, botY-scrollHeight+currentScroll-scrollHeight);
+  currentScroll+=5;
   if (currentScroll>scrollHeight) {
     currentScroll = 0;
   }
@@ -41,4 +44,20 @@ void playScreen() {
 
 void menuScreen() {
   background(bg);
+}
+
+void resetGame() {
+  int i = engine.size()-1;
+  while (i >= 0) {
+    engine.remove(i);
+    i--;
+  }
+  realPlayer.hp = realPlayer.maxhp;
+  engine.add(realPlayer);
+  playerisdead = false;
+  realPlayer.fanIce.btimer = 0;
+  
+  realPlayer.pos.x = centX;
+  realPlayer.pos.y = 300;
+  realPlayer.iframes = 60;
 }
