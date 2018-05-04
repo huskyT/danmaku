@@ -1,8 +1,8 @@
 
 class EnemyFan extends Gun {
   EnemyFan() {
-    super(20); //This is the fire rate
-    btimer = 15;
+    super(10000); //This is the fire rate
+    btimer = 10;
   }
   
   void shoot() {
