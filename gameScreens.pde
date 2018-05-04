@@ -10,7 +10,7 @@ void playScreen() {
   
   image(longbg, topX, botY-scrollHeight+currentScroll);
   image(longbg, topX, botY-scrollHeight+currentScroll-scrollHeight);
-  currentScroll+=5;
+  currentScroll+=10;
   if (currentScroll>scrollHeight) {
     currentScroll = 0;
   }
