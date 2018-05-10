@@ -1,5 +1,5 @@
 PImage psprite, psprite1;
-PImage cyanball, pinkball, cyanshap, orangeball, redshap;
+PImage cyanball, pinkball, cyanshap, orangeball, redshap, purpleball, redball;
 PImage blackstream;
 PImage iceshard;
 PImage abbar, hpbar;
@@ -20,6 +20,8 @@ void loadSprites() {
   cyanshap = loadImage("aseex/cyanshap.png");
   redshap = loadImage("aseex/redsharp.png");
   pinkball = loadImage("aseex/pinkball.png");
+  purpleball = loadImage("aseex/purpleball.png");
+  redball = loadImage("aseex/redball.png");
   
   iceshard = loadImage("aseex/playershap.png");
   

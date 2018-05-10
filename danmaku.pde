@@ -62,8 +62,11 @@ void keyPressed() {
   if (keyCode == LEFT) leftk = true;
   if (keyCode == SHIFT) shiftk = true;
   if (key == 'r' || key == 'R') {
-    //Reset game
-    resetGame();
+    //Reset game if you're in the game screen
+    if (currentScreen == "game") {
+      resetGame();
+      tFrames = tLength;
+    }
   }
 }
 
@@ -86,7 +89,7 @@ void defaultDraw() {
 
 void mouseClicked() {
   int z = menu.size()-1;
-  while (z >= 0) {
+  while (z >= 0 && currentScreen == "menu") {
     MenuButton obj = menu.get(z); //This can represent a thing
     obj.action();
     z--;

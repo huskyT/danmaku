@@ -9,7 +9,7 @@ class EnemyFan extends Gun {
     //b fire (ability)
     //if ze e kee is held down then do a fire a boolet (if btimer is up)
     if (btimer == 0) {
-      fanFireE(0, 5, PI/2); // Direction, bulletcount, cone of fire
+      fanFireE(0, 2, PI/6); // Direction, bulletcount-1, cone of fire
       //Start the timer till next bullet can be fired (in frames)
       btimer = fireRate;
     }

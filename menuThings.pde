@@ -8,7 +8,7 @@ void transition() {
     image(white, width/2, height/2);
     noTint();
   }
-  tFrames -= 1;
+  tFrames -= 2;
 }
 
 void clearMenu() {
@@ -52,8 +52,18 @@ class MenuButton{
     text(label, pos.x, pos.y);
   }
   
-  void action() {
+  void action() { //When a click is detected this is what the booton does.
     print("test");
+    if (isHover() == true) { //What to do when the button is clicked:
+      if (function == "resetGame") {
+        //Switch to gamescreen and reset it
+        switchTo("game");
+        resetGame();
+      }
+      else if (function == "menuSwitch") {
+        menuSwitch(argument);
+      }
+    }
   }
   
   boolean isHover() {
@@ -67,18 +77,21 @@ class MenuButton{
 
 void menuSwitch(int screen) {
   //First remove all the current bootons.
-  int i = menu.size()-1;
-  while (i >= 0) {
-    menu.remove(i);
-    i--;
-  }
+  clearMenu();
+  tFrames = tLength;
   //Then add the new bootons based on waht the screen value is.
   switch(screen) {
     case(1): //Initial Screen
-    menu.add(new MenuButton("This button", 30, 120, "Goto", 2, 200, 200));
+    menu.add(new MenuButton("Start Game", 30, 120, "resetGame", 1, 200, 200));
+    menu.add(new MenuButton("Options", 30, 120, "menuSwitch", 2, 200, 300));
     break;
-    case(2): //Not quite initial - start menu screen
-    menu.add(new MenuButton("This button", 40, 200, "Goto", 2, 50, 50));
+    case(2): //the 2nd menu Screen
+    menu.add(new MenuButton("This changes ALL the options", 40, 200, "menuSwitch", 1, 50, 50));
     break;
   }
+}
+
+void switchTo(String a) {
+  tFrames = tLength;
+  currentScreen = a;
 }

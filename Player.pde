@@ -39,6 +39,7 @@ class Player extends GameObject {
     
     if (shiftk){
       fill(255,0,0);
+      noStroke();
       ellipse(pos.x, pos.y, 3, 3);
     }
   }
