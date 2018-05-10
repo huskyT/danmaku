@@ -41,7 +41,7 @@ void playScreen() {
 }
 
 void menuScreen() {
-  background(bg);
+  background(menubg);
   int z = menu.size()-1;
   while (z >= 0) {
     MenuButton obj = menu.get(z); //This can represent a thing

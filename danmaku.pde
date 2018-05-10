@@ -1,9 +1,12 @@
 ArrayList<GameObject> engine;
 PImage bg;
-String currentScreen = "game"; //Use menu, game, help, instruction, 
+String currentScreen; //Use menu, game, help, instruction, 
 
 boolean upk, downk, rightk, leftk, zk, xk, shiftk;
 Player realPlayer;
+
+int tFrames = 60; //frames of animation left for transition
+int tLength = tFrames; //animation length.
 
 //Variables for convenience
 int centX = 224; //Co-orinates of game area
@@ -34,6 +37,7 @@ void setup() {
   playerisdead = false;
   frameRate(60);
   
+  currentScreen = "menu";
 }
 
 void draw() {

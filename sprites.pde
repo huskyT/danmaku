@@ -5,6 +5,7 @@ PImage iceshard;
 PImage abbar, hpbar;
 PImage jellyfish;
 PImage gamebg, menubg, longbg;
+PImage white;
 
 void loadSprites() {
   psprite = loadImage("aseex/psprite.png"); //Player frame 1
@@ -24,6 +25,7 @@ void loadSprites() {
   
   jellyfish = loadImage("aseex/jellyfish.png");
   
+  white = loadImage("aseex/white.png");
   gamebg = loadImage("aseex/gamebg.png");
   menubg = loadImage("aseex/menubg.png");
   longbg = loadImage("aseex/longbg.png");
