@@ -22,9 +22,12 @@ void setup() {
   imageMode(CENTER);
   
   engine = new ArrayList<GameObject>(200); //Capacity of array list
+  menu = new ArrayList<MenuButton>(200); //Capacity of array list
   bg = loadImage("aseex/background.png");
   
   loadSprites();
+  
+  menuSwitch(1); //Start off the menu screen on the inital page.
   
   realPlayer = new Player();
   engine.add(realPlayer);
@@ -41,6 +44,8 @@ void draw() {
   else if (currentScreen == "menu") {
     menuScreen();
   }
+  displayCoords();
+  displayFPS();
   transition();
 }
 
@@ -53,7 +58,7 @@ void keyPressed() {
   if (keyCode == LEFT) leftk = true;
   if (keyCode == SHIFT) shiftk = true;
   if (key == 'r' || key == 'R') {
-    //Reset game if the player is dead
+    //Reset game
     resetGame();
   }
 }
@@ -73,4 +78,13 @@ void defaultDraw() {
   colorMode(RGB);
   tint(255,255);
   fill(255);
+}
+
+void mouseClicked() {
+  int z = menu.size()-1;
+  while (z >= 0) {
+    MenuButton obj = menu.get(z); //This can represent a thing
+    obj.action();
+    z--;
+  }
 }

@@ -37,13 +37,17 @@ void playScreen() {
   //The overlay menu ish thing
   image(bg, width/2, height/2);
   
-  displayCoords();
-  displayFPS();
   displayFire();
 }
 
 void menuScreen() {
   background(bg);
+  int z = menu.size()-1;
+  while (z >= 0) {
+    MenuButton obj = menu.get(z); //This can represent a thing
+    obj.show();
+    z--;
+  }
 }
 
 void resetGame() {
