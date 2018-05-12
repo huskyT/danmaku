@@ -4,7 +4,6 @@ int iceTill;
 int iceOf;
 
 class Gun extends GameObject {
-  int btimer;
   int fireRate;
   Gun(int _fireRate) {
     fireRate = _fireRate;
@@ -23,7 +22,7 @@ class Gun extends GameObject {
   
   void fanFireE(float direction, int bulletCount, float aoe) {
     for (int z=bulletCount; z>=0; z--) {
-      engine.add(new CyanBall(aoe/bulletCount*z-aoe/2+direction, pos.x, pos.y));
+      engine.add(new TinyBall(aoe/bulletCount*z-aoe/2+direction, pos.x, pos.y));
     }
   }
 }
@@ -36,15 +35,7 @@ class FanIce extends Gun {
   }
   
   void shoot() {
-    //b fire (ability)
-    //if ze e kee is held down then do a fire a boolet (if btimer is up)
-    if (xk && btimer == 0) {
-      fanFire(0, 36, TWO_PI); // Direction, bulletcount, cone of fire
-      //Start the timer till next bullet can be fired (in frames)
-      btimer = fireRate;
-    }
-    else if (btimer != 0) btimer -= 1;
-    iceTill = btimer;
+    fanFire(0, 35, TWO_PI); // Direction, bulletcount, cone of fire
   }
 }
 
@@ -56,13 +47,6 @@ class FireRed extends Gun {
   
   void shoot() {
     //a fire(autoattacks)
-    //if x is held down then do a fire a boolet (if btimer is up)
-    if (zk && btimer == 0) {
-      doubleFire(8); // gap
-      //Start the timer till next bullet can be fired (in frames)
-      btimer = fireRate;
-    }
-    else if (btimer != 0) btimer -= 1;
-    fireTill = btimer;
+    doubleFire(8);
   }
 }

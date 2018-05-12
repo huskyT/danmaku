@@ -38,13 +38,17 @@ void playScreen() {
   //The overlay menu ish thing
   image(bg, width/2, height/2);
   
-  displayCoords();
-  displayFPS();
   displayFire();
 }
 
 void menuScreen() {
-  background(bg);
+  background(menubg);
+  int z = menu.size()-1;
+  while (z >= 0) {
+    MenuButton obj = menu.get(z); //This can represent a thing
+    obj.show();
+    z--;
+  }
 }
 
 void resetGame() {
@@ -56,7 +60,6 @@ void resetGame() {
   realPlayer.hp = realPlayer.maxhp;
   engine.add(realPlayer);
   playerisdead = false;
-  realPlayer.fanIce.btimer = 0;
   
   realPlayer.pos.x = centX;
   realPlayer.pos.y = 300;

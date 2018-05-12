@@ -1,19 +1,13 @@
 
 class EnemyFan extends Gun {
   EnemyFan() {
-    super(10000); //This is the fire rate
-    btimer = 10;
+    super(-1); //This is the fire rate
   }
   
   void shoot() {
     //b fire (ability)
-    //if ze e kee is held down then do a fire a boolet (if btimer is up)
-    if (btimer == 0) {
-      fanFireE(0, 5, PI/2); // Direction, bulletcount, cone of fire
-      //Start the timer till next bullet can be fired (in frames)
-      btimer = fireRate;
-    }
-    else if (btimer != 0) btimer -= 1;
+    float angletoPlayer = atan((realPlayer.pos.x - pos.x)/(realPlayer.pos.y - pos.y))*(-1);
+    fanFireE(angletoPlayer, 2, PI/6); // Direction, bulletcount-1, cone of fire
   }
 }
 

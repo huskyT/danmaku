@@ -1,10 +1,11 @@
 PImage psprite, psprite1;
-PImage cyanball, pinkball, cyanshap, orangeball, redshap;
+PImage cyanball, pinkball, cyanshap, orangeball, redshap, purpleball, redball;
 PImage blackstream;
 PImage iceshard;
 PImage abbar, hpbar;
 PImage jellyfish;
 PImage gamebg, menubg, longbg;
+PImage white;
 
 void loadSprites() {
   psprite = loadImage("aseex/psprite.png"); //Player frame 1
@@ -19,11 +20,14 @@ void loadSprites() {
   cyanshap = loadImage("aseex/cyanshap.png");
   redshap = loadImage("aseex/redsharp.png");
   pinkball = loadImage("aseex/pinkball.png");
+  purpleball = loadImage("aseex/purpleball.png");
+  redball = loadImage("aseex/redball.png");
   
   iceshard = loadImage("aseex/playershap.png");
   
   jellyfish = loadImage("aseex/jellyfish.png");
   
+  white = loadImage("aseex/white.png");
   gamebg = loadImage("aseex/gamebg.png");
   menubg = loadImage("aseex/menubg.png");
   longbg = loadImage("aseex/longbg.png");
