@@ -1,14 +1,28 @@
 class TestEnemy extends Enemy {
-  EnemyFan enemyfan;
+  Gun gun;
   TestEnemy(int x, int y) {
     super(x, y, jellyfish, 30, 30);
-    enemyfan = new EnemyFan();
+    gun = new Gun(10);
+    hp = 10;
+    fireRate = 20;
+    fireDelay = 60;
+    btimer = fireDelay;
+    ammo = 2;
   }
   
   void move() {
-    enemyfan.shoot();
-    enemyfan.pos.x = pos.x;
-    enemyfan.pos.y = pos.y;
+    gun.pos.x = pos.x;
+    gun.pos.y = pos.y;
+    
+    //if ze e kee is held down then do a fire a boolet (if btimer is up) only if you have ammo
+    if (btimer == 0 && ammo > 0) {
+      float angletoPlayer = atan((realPlayer.pos.x - pos.x)/(realPlayer.pos.y - pos.y))*(-1);
+      gun.fanFireE(angletoPlayer, 2, PI/6); // Direction, bulletcount-1, cone of fire
+      //Start the timer till next bullet can be fired (in frames)
+      btimer = fireRate;
+      ammo-=1; //-1 to ammo
+    }
+    btimer -= 1;
     
     pos.add(vel);
     
@@ -29,6 +43,10 @@ class TestEnemy extends Enemy {
     if (hp < 1) {
       explode(pos.x, pos.y, 5);
     }
+  }
+  
+  void shoot() {
+    
   }
 }
 

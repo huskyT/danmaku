@@ -59,7 +59,6 @@ void resetGame() {
   realPlayer.hp = realPlayer.maxhp;
   engine.add(realPlayer);
   playerisdead = false;
-  realPlayer.fanIce.btimer = 0;
   
   realPlayer.pos.x = centX;
   realPlayer.pos.y = 300;

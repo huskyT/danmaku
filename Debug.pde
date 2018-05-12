@@ -22,7 +22,7 @@ void displayFire() {
   fill(255);
   imageMode(CORNER);
   image(abbar, 464, 159);
-  rect(465, 160, 130*iceTill/iceOf, 20);
+  rect(465, 160, 130*realPlayer.aleft/realPlayer.atimer, 20);
   image(hpbar, 464, 119);
   rect(465, 120, 130-(130*realPlayer.hp/realPlayer.maxhp), 20);
   rectMode(CENTER);

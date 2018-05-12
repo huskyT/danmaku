@@ -4,6 +4,9 @@ class Enemy extends GameObject {
   int hp;
   PImage sprite;
   int alivetime;
+  int fireDelay = 0; //The delay before the first shot
+  int fireRate, btimer; //Fire rate
+  int ammo = 0; //number of bullets it fires
   
   Enemy(int locx, int locy, PImage _sprite, int _wx, int _wy) {
     pos.x = locx;

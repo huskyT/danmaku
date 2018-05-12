@@ -3,22 +3,31 @@ int blinkstate = 1;
 
 //class of the controllable ship that represents the player etc
 class Player extends GameObject {
-  FanIce fanIce;
-  FireRed fireRed;
-  int maxhp = 8;
+  Gun gun;
+  int maxhp = 10;
   int iframes;
   int maxiframes = 40;
+  int btimer, bleft;
+  int atimer, aleft;
   
   Player() {
+    //Location and whatnot
     pos.x = centX;
     pos.y = 300;
     spd = 3.5;
-    fanIce = new FanIce();
-    fireRed = new FireRed();
+    
+    gun = new Gun(12);//Initialise the dude's gun
     hp = maxhp;
-    iframes = 60;
-    wx = 1;
-    wy = 1;
+    iframes = 60; //Invincibility frames
+    wx = 1; wy = 1;
+    
+    //Bullet timer
+    btimer = 6;
+    bleft = 0;
+    
+    //Special Timer
+    atimer = 600;
+    aleft = 0;
   }
 
   //Render the thing whoo
@@ -58,8 +67,23 @@ class Player extends GameObject {
     if (rightk && pos.x < botX) vel.x += spd;
     if (leftk && pos.x > topX) vel.x -= spd;
     
-    fanIce.shoot();
-    fireRed.shoot();
+    //Fire when it's at 0 and z is pressed.
+    if (zk && bleft == 0) {
+      gun.doubleFire(8);
+      bleft = btimer;
+    }
+    if (bleft>0) {
+      bleft -= 1;
+    }
+    
+    //Fire when it's at 0 and x is pressed.
+    if (xk && aleft == 0) {
+      gun.fanFire(0, 35, TWO_PI); // Direction, bulletcount-1, cone of fire - fires 36 bullets in a circle
+      aleft = atimer;
+    }
+    if (aleft>0) {
+      aleft -= 1;
+    }
     
     //if shif is held then slow the player
     if (shiftk) spd = 2;
