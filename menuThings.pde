@@ -17,7 +17,6 @@ class MenuButton{
     wy = _tall;
     function = _function;
     argument = _argument;
-    print("You're cute!");  
 }
   
   

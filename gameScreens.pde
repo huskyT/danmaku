@@ -32,6 +32,7 @@ void playScreen() {
     i--;
   }
   
+  //TEST FEATURE - Summoning test enemies.
   if(frameCount%30==0) engine.add(new TestEnemy(int(random(topX, botX)), topY));
   
   //The overlay menu ish thing
