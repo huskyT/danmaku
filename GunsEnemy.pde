@@ -6,7 +6,7 @@ class EnemyFan extends Gun {
   
   void shoot() {
     //b fire (ability)
-    float angletoPlayer = atan((realPlayer.pos.x - pos.x)/(realPlayer.pos.y - pos.y))*(-1);
+    float angletoPlayer = atan((realPlayer.pos.x - pos.x)/(realPlayer.pos.y - pos.y));
     fanFireE(angletoPlayer, 2, PI/6); // Direction, bulletcount-1, cone of fire
   }
 }

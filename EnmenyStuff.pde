@@ -73,7 +73,7 @@ class BossOne extends Enemy {
     //if ze e kee is held down then do a fire a boolet (if btimer is up) only if you have ammo
     if (btimer == 0 && ammo > 0) {
       //shoot to player?
-      float angletoPlayer = atan((realPlayer.pos.x - pos.x)/(realPlayer.pos.y - pos.y))*(-1);
+      float angletoPlayer = atan2(realPlayer.pos.y-pos.y,realPlayer.pos.x - pos.x)-PI/2;
       gun.fanFireE(angletoPlayer, 29, PI); // Direction, bulletcount-1, cone of fire
       //Start the timer till next bullet can be fired (in frames)
       btimer = fireRate;
