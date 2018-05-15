@@ -32,7 +32,7 @@ void playScreen() {
     i--;
   }
   
-  if(frameCount%30==0) engine.add(new TestEnemy(int(random(topX, botX)), topY));
+  //if(frameCount%600==0) engine.add(new BossOne(int(random(topX, botX)), topY));
   
   //The overlay menu ish thing
   image(bg, width/2, height/2);

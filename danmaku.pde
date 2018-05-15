@@ -73,6 +73,7 @@ void keyPressed() {
 void keyReleased() {
   if (key == 'z' || key == 'Z') zk = false;
   if (key == 'x' || key == 'X') xk = false;
+  if (key == 'q' || key == 'Q') engine.add(new BossOne(230, 100));
   if (keyCode == DOWN) downk = false;
   if (keyCode == UP) upk = false;
   if (keyCode == RIGHT) rightk = false;
