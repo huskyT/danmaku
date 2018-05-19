@@ -41,7 +41,6 @@ void setup() {
 }
 
 void draw() {
-  println(frameRate);
   if (currentScreen == "game") {
     playScreen();
   }

@@ -1,8 +1,8 @@
 class TestEnemy extends Enemy {
-  Gun gun;
+Gun gun;
   TestEnemy(int x, int y) {
     super(x, y, jellyfish, 30, 30);
-    gun = new Gun(10);
+    gun = new Gun();
     hp = 1;
     fireRate = 20;
     fireDelay = 60;
@@ -51,30 +51,42 @@ class TestEnemy extends Enemy {
   }
 }
 
+//-----________________________________________________________________________________________________________________________________________________
+
 class BossOne extends Enemy {
   Gun gun;
+  ArrayList<Gun> myguns = new ArrayList<Gun>(5);
   BossOne(int x, int y) {
-    super(x, y, pinkball, 30, 30);
-    gun = new Gun(10);
-    hp = 250;
+    super(x, y, boss1, 45, 45);
+    gun = new Gun();
+    hp = 200;
     fireRate = 20;
-    fireDelay = 200;
+    fireDelay = 50;
     btimer = fireDelay;
-    ammo = 12;
+    ammo = 30;
     
-    vel.x = 0;
-    vel.y = 0.2;
+    vel.x = random(-3, 3);
+    vel.y = 0.1;
+    
+    myguns.add(new Trickle());
+    myguns.add(new Trickle());
+    myguns.add(new Trickle());
+    myguns.add(new Trickle());
+    myguns.add(new Trickle());
   }
   
   void move() {
     gun.pos.x = pos.x;
     gun.pos.y = pos.y;
     
-    //if ze e kee is held down then do a fire a boolet (if btimer is up) only if you have ammo
+    if (pos.x<topX || pos.x>botX) vel.x = vel.x*(-1);
+    if (pos.y<topY || pos.y>botY) vel.y = vel.y*(-1);
+    
+    //if ze e kee is held down then ado a fire a boolet (if btimer is up) only if you have ammo
     if (btimer == 0 && ammo > 0) {
       //shoot to player?
       float angletoPlayer = atan2(realPlayer.pos.y-pos.y,realPlayer.pos.x - pos.x)-PI/2;
-      gun.fanFireE(angletoPlayer, 29, PI); // Direction, bulletcount-1, cone of fire
+      gun.fanFireE(angletoPlayer, 5, PI/5); // Direction, bulletcount-1, cone of fire
       //Start the timer till next bullet can be fired (in frames)
       btimer = fireRate;
       ammo-=1; //-1 to ammo
@@ -98,12 +110,14 @@ class BossOne extends Enemy {
     }
     alivetime++;
     if (hp < 1) {
-      explode(pos.x, pos.y, 5);
+      bexplode(pos.x, pos.y, 21);
     }
   }
   
   void shoot() {
-    
+    Gun thisgun = myguns.get(1); //This can represent a thing
+    float angletoPlayer = atan2(realPlayer.pos.y-pos.y,realPlayer.pos.x - pos.x)-PI/2;
+    //thisgun.shoot(angletoPlayer, 5, PI/5);
   }
 }
 

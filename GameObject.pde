@@ -52,7 +52,7 @@ class ExParticle extends GameObject {
   
   void show() {
     fill(random(255),random(255), random(255));
-    ellipse(pos.x, pos.y, girth, girth);
+    rect(pos.x, pos.y, girth, girth);
   }
   
   boolean isDead() {
