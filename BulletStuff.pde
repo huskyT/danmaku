@@ -42,7 +42,7 @@ class PlayerSnowball extends PlayerBullet {
 
 class CyanBall extends EnemyBullet {
   CyanBall(float angle, float xpos, float ypos) {
-    super(angle, 2, redball, 20, 20, xpos, ypos, 1);
+    super(angle, 4, redball, 20, 20, xpos, ypos, 1);
   }
 }
 

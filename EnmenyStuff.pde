@@ -3,7 +3,7 @@ class TestEnemy extends Enemy {
   TestEnemy(int x, int y) {
     super(x, y, jellyfish, 30, 30);
     gun = new Gun(10);
-    hp = 10;
+    hp = 5;
     fireRate = 20;
     fireDelay = 60;
     btimer = fireDelay;
