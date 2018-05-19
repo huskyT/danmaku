@@ -3,7 +3,7 @@ PImage cyanball, pinkball, cyanshap, orangeball, redshap, purpleball, redball;
 PImage blackstream;
 PImage iceshard;
 PImage abbar, hpbar;
-PImage jellyfish;
+PImage jellyfish, boss1;
 PImage gamebg, menubg, longbg;
 PImage white;
 
@@ -23,9 +23,10 @@ void loadSprites() {
   purpleball = loadImage("aseex/purpleball.png");
   redball = loadImage("aseex/redball.png");
   
-  iceshard = loadImage("aseex/playershap.png");
+  iceshard = loadImage("aseex/cyanshap.png");
   
   jellyfish = loadImage("aseex/jellyfish.png");
+  boss1 = loadImage("aseex/boss1.png");
   
   white = loadImage("aseex/white.png");
   gamebg = loadImage("aseex/gamebg.png");

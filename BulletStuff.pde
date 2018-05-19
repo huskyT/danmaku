@@ -19,7 +19,7 @@ class PlayerIce extends PlayerBullet {
 
 class PlayerSnowball extends PlayerBullet {
   PlayerSnowball(float angle, float xpos, float ypos) {
-    super(angle, 10, iceshard, 32, 35, xpos, ypos, 5);
+    super(angle, 10, iceshard, 8, 40, xpos, ypos, 5);
   }
   
   void move() { 
@@ -40,9 +40,9 @@ class PlayerSnowball extends PlayerBullet {
   }
 }
 
-class CyanBall extends EnemyBullet {
-  CyanBall(float angle, float xpos, float ypos) {
-    super(angle, 4, redball, 20, 20, xpos, ypos, 1);
+class TinyRed extends EnemyBullet {
+  TinyRed(float angle, float xpos, float ypos) {
+    super(angle, 2, redshap, 10, 20, xpos, ypos, 1);
   }
 }
 

@@ -16,7 +16,7 @@ class Player extends GameObject {
     pos.y = 300;
     spd = 3.5;
     
-    gun = new Gun(12);//Initialise the dude's gun
+    gun = new Gun();//Initialise the dude's gun
     hp = maxhp;
     iframes = 60; //Invincibility frames
     wx = 1; wy = 1;
@@ -26,7 +26,7 @@ class Player extends GameObject {
     bleft = 0;
     
     //Special Timer
-    atimer = 600;
+    atimer = 60;
     aleft = 0;
   }
 

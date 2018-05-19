@@ -5,8 +5,7 @@ int iceOf;
 
 class Gun extends GameObject {
   int fireRate;
-  Gun(int _fireRate) {
-    fireRate = _fireRate;
+  Gun() {
   }
   
   void fanFire(float direction, int bulletCount, float aoe) {
@@ -22,31 +21,19 @@ class Gun extends GameObject {
   
   void fanFireE(float direction, int bulletCount, float aoe) {
     for (int z=bulletCount; z>=0; z--) {
-      engine.add(new TinyBall(aoe/bulletCount*z-aoe/2+direction, pos.x, pos.y));
+      engine.add(new TinyRed(aoe/bulletCount*z-aoe/2+direction, pos.x, pos.y));
     }
   }
 }
 
 
-class FanIce extends Gun {
-  FanIce() {
-    super(600); //This is the fire rate
-    iceOf = 600;
+class Trickle extends Gun {
+  Trickle() {
   }
   
-  void shoot() {
-    fanFire(0, 35, TWO_PI); // Direction, bulletcount, cone of fire
-  }
-}
-
-class FireRed extends Gun {
-  FireRed() {
-    super(6); //This is the fire rate
-    fireOf = 6;
-  }
-  
-  void shoot() {
-    //a fire(autoattacks)
-    doubleFire(8);
+  void shoot(float direction, int bulletCount, float aoe) {
+    for (int z=bulletCount; z>=0; z--) {
+      engine.add(new TinyRed(aoe/bulletCount*z-aoe/2+direction, pos.x, pos.y));
+    }
   }
 }
