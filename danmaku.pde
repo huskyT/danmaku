@@ -94,4 +94,5 @@ void mouseClicked() {
     obj.action();
     z--;
   }
+  engine.add(new TestEnemy(mouseX, mouseY));
 }

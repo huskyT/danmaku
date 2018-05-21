@@ -55,6 +55,8 @@ Gun gun;
 
 class BossOne extends Enemy {
   Gun gun;
+  
+  //An ARRAY OF GUNS??? LIKE MATRIX BUT THEY'RE NOT REAL GUNS THEY ARE MAGIC gUNS
   ArrayList<Gun> myguns = new ArrayList<Gun>(5);
   BossOne(int x, int y) {
     super(x, y, boss1, 45, 45);
@@ -84,9 +86,7 @@ class BossOne extends Enemy {
     
     //if ze e kee is held down then ado a fire a boolet (if btimer is up) only if you have ammo
     if (btimer == 0 && ammo > 0) {
-      //shoot to player?
-      float angletoPlayer = atan2(realPlayer.pos.y-pos.y,realPlayer.pos.x - pos.x)-PI/2;
-      gun.fanFireE(angletoPlayer, 5, PI/5); // Direction, bulletcount-1, cone of fire
+      shoot(); // Direction, bulletcount-1, cone of fire
       //Start the timer till next bullet can be fired (in frames)
       btimer = fireRate;
       ammo-=1; //-1 to ammo
@@ -117,7 +117,8 @@ class BossOne extends Enemy {
   void shoot() {
     Gun thisgun = myguns.get(1); //This can represent a thing
     float angletoPlayer = atan2(realPlayer.pos.y-pos.y,realPlayer.pos.x - pos.x)-PI/2;
-    //thisgun.shoot(angletoPlayer, 5, PI/5);
+    thisgun.shoot(angletoPlayer, 5, PI/5);
+    println("SHOT");
   }
 }
 

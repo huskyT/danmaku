@@ -4,7 +4,6 @@ int iceTill;
 int iceOf;
 
 class Gun extends GameObject {
-  int fireRate;
   Gun() {
   }
   
@@ -24,6 +23,11 @@ class Gun extends GameObject {
       engine.add(new TinyRed(aoe/bulletCount*z-aoe/2+direction, pos.x, pos.y));
     }
   }
+  
+  void shoot(float direction, int bulletCount, float aoe) {
+    float angletoPlayer = atan((realPlayer.pos.x - pos.x)/(realPlayer.pos.y - pos.y))*(-1);
+    
+  }
 }
 
 
@@ -32,8 +36,16 @@ class Trickle extends Gun {
   }
   
   void shoot(float direction, int bulletCount, float aoe) {
-    for (int z=bulletCount; z>=0; z--) {
-      engine.add(new TinyRed(aoe/bulletCount*z-aoe/2+direction, pos.x, pos.y));
-    }
+    println("TRICKEL");
+    super.shoot(direction, bulletCount, aoe);
+  }
+}
+
+class Pour extends Gun {
+  Pour() {
+  }
+  
+  void shoot(float direction, int bulletCount, float aoe) {
+    super.shoot(direction, bulletCount, aoe);
   }
 }
