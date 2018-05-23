@@ -47,9 +47,7 @@ class Player extends GameObject {
     noTint();
     
     if (shiftk){
-      fill(255,0,0);
-      noStroke();
-      ellipse(pos.x, pos.y, 3, 3);
+      image(indicator, pos.x, pos.y);
     }
   }
   

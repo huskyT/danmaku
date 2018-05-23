@@ -17,7 +17,7 @@ class PlayerIce extends PlayerBullet {
   }
 }
 
-class PlayerSnowball extends PlayerBullet {
+class PlayerSnowball extends PlayerBullet { //Long projectile belonging to player that kills enemy bullets
   PlayerSnowball(float angle, float xpos, float ypos) {
     super(angle, 10, iceshard, 8, 40, xpos, ypos, 5);
   }
@@ -40,14 +40,20 @@ class PlayerSnowball extends PlayerBullet {
   }
 }
 
-class TinyRed extends EnemyBullet {
+class TinyRed extends EnemyBullet { //Small diamond projectile
   TinyRed(float angle, float xpos, float ypos) {
-    super(angle, 2, redshap, 10, 20, xpos, ypos, 1);
+    super(angle, 2, redshap, 8, 20, xpos, ypos, 1);
   }
 }
 
-class TinyBall extends EnemyBullet {
+class TinyBall extends EnemyBullet { //small balls
   TinyBall(float angle, float xpos, float ypos) {
-    super(angle, 2, redball, 15, 15, xpos, ypos, 1);
+    super(angle, 4, redball, 15, 15, xpos, ypos, 1);
+  }
+}
+
+class EnemyShot1 extends EnemyBullet { //small balls
+  EnemyShot1(float angle, float xpos, float ypos) {
+    super(angle, 5, cyanball, 15, 15, xpos, ypos, 1);
   }
 }

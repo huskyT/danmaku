@@ -24,16 +24,12 @@ class Gun extends GameObject {
       engine.add(new TinyRed(aoe/bulletCount*z-aoe/2+direction, pos.x, pos.y));
     }
   }
-}
-
-
-class Trickle extends Gun {
-  Trickle() {
+  
+  void tinyFireE(float direction) {
+    engine.add(new TinyBall(direction, pos.x, pos.y));
   }
   
-  void shoot(float direction, int bulletCount, float aoe) {
-    for (int z=bulletCount; z>=0; z--) {
-      engine.add(new TinyRed(aoe/bulletCount*z-aoe/2+direction, pos.x, pos.y));
-    }
+  void fastFireE(float direction, int tilt, float tiltamount) {
+    engine.add(new EnemyShot1(direction + tilt*tiltamount, pos.x, pos.y));
   }
 }

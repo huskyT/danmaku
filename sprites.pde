@@ -6,6 +6,7 @@ PImage abbar, hpbar;
 PImage jellyfish, boss1;
 PImage gamebg, menubg, longbg;
 PImage white;
+PImage indicator;
 
 void loadSprites() {
   psprite = loadImage("aseex/psprite.png"); //Player frame 1
@@ -33,4 +34,7 @@ void loadSprites() {
   menubg = loadImage("aseex/menubg.png");
   longbg = loadImage("aseex/longbg.png");
   scrollHeight = longbg.height;
+  
+  indicator = loadImage("aseex/redball.png");
+  indicator.resize(6,6);
 }

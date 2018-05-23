@@ -7,7 +7,7 @@ class Enemy extends GameObject {
   int fireDelay = 0; //The delay before the first shot
   int fireRate, btimer; //Fire rate
   int ammo = 0; //number of bullets it fires
-  int loadedGun;
+  int phase, phasecount;
   
   Enemy(int locx, int locy, PImage _sprite, int _wx, int _wy) {
     pos.x = locx;
@@ -28,6 +28,7 @@ class Enemy extends GameObject {
   
   void move() {
     pos.add(vel);
+    vel.add(accel);
     
     //Test hitbox with stuff
     int i = 0;

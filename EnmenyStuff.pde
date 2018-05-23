@@ -26,6 +26,7 @@ Gun gun;
     btimer -= 1;
     
     pos.add(vel);
+    vel.add(accel);
     
     //Test hitbox with stuff
     int i = 0;
@@ -55,7 +56,6 @@ Gun gun;
 
 class BossOne extends Enemy {
   Gun gun;
-  ArrayList<Gun> myguns = new ArrayList<Gun>(5);
   BossOne(int x, int y) {
     super(x, y, boss1, 45, 45);
     gun = new Gun();
@@ -63,16 +63,12 @@ class BossOne extends Enemy {
     fireRate = 20;
     fireDelay = 50;
     btimer = fireDelay;
-    ammo = 30;
+    ammo = 0;
+    phase = 0;
+    phasecount = 7;
     
-    vel.x = random(-3, 3);
+    vel.x = 0;
     vel.y = 0.1;
-    
-    myguns.add(new Trickle());
-    myguns.add(new Trickle());
-    myguns.add(new Trickle());
-    myguns.add(new Trickle());
-    myguns.add(new Trickle());
   }
   
   void move() {
@@ -82,18 +78,11 @@ class BossOne extends Enemy {
     if (pos.x<topX || pos.x>botX) vel.x = vel.x*(-1);
     if (pos.y<topY || pos.y>botY) vel.y = vel.y*(-1);
     
-    //if ze e kee is held down then ado a fire a boolet (if btimer is up) only if you have ammo
-    if (btimer == 0 && ammo > 0) {
-      //shoot to player?
-      float angletoPlayer = atan2(realPlayer.pos.y-pos.y,realPlayer.pos.x - pos.x)-PI/2;
-      gun.fanFireE(angletoPlayer, 5, PI/5); // Direction, bulletcount-1, cone of fire
-      //Start the timer till next bullet can be fired (in frames)
-      btimer = fireRate;
-      ammo-=1; //-1 to ammo
-    }
-    btimer -= 1;
+    
     
     pos.add(vel);
+    vel.add(accel);
+    shoot();
     
     //Test hitbox with stuff
     int i = 0;
@@ -115,9 +104,75 @@ class BossOne extends Enemy {
   }
   
   void shoot() {
-    Gun thisgun = myguns.get(1); //This can represent a thing
     float angletoPlayer = atan2(realPlayer.pos.y-pos.y,realPlayer.pos.x - pos.x)-PI/2;
-    //thisgun.shoot(angletoPlayer, 5, PI/5);
+    //if ze e kee is held down then ado a fire a boolet (if btimer is up) only if you have ammo
+    if (btimer == 0) { 
+      switch(phase) { //Depending on which phase, shoot a different thing from the gun
+        case 1:
+          gun.fanFireE(angletoPlayer, 6, PI/3); // Direction, bulletcount-1, cone of fire
+          break;
+        case 2:
+          //Take a break :D
+          break;
+        case 3:
+          gun.tinyFireE(angletoPlayer); // Direction, bulletcount-1, cone of fire
+          break;
+        case 4:
+          //Do nothing!
+          break;
+        case 5: //Fire which fans off
+          gun.fastFireE(-PI/4, ammo, PI/18);
+          break;
+        case 6: //fan off in other direction now
+          gun.fastFireE(PI/4, ammo, -PI/18);
+          break;
+        case 7:
+          //idle
+          break;
+      }
+      //Start the timer till next bullet can be fired (in frames)
+      btimer = fireRate;
+      ammo-=1; //-1 to ammo
+    }
+    btimer -= 1;
+    if (ammo == 0) { //When ammo reaches zeho...
+      phase += 1;
+      if (phase > phasecount) phase = 1;
+      loadGun(phase);
+    }
+    println(phase + " this " + ammo);
+  }
+  
+  void loadGun(int phase){
+    switch(phase) {
+      case 1:
+        ammo = 3;
+        fireRate = 40;
+        break;
+      case 2:
+        ammo = 1;
+        fireRate = 120;
+        break;
+      case 3:
+        ammo = 20;
+        fireRate = 12;
+        break;
+      case 4:
+        ammo = 1;
+        fireRate = 120;
+        break;
+      case 5:
+        ammo = 12;
+        fireRate = 4;
+        break;
+      case 6:
+        ammo = 12;
+        fireRate = 4;
+        break;
+      case 7:
+        ammo = 1;
+        fireRate = 120;
+    }
   }
 }
 
