@@ -4,7 +4,7 @@ int blinkstate = 1;
 //class of the controllable ship that represents the player etc
 class Player extends GameObject {
   Gun gun;
-  int maxhp = 5-difficulty;
+  int maxhp = 6-difficulty;
   int iframes;
   int maxiframes = 40;
   int btimer, bleft;

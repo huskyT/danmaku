@@ -14,7 +14,6 @@ Gun gun;
   }
   
   void move() {
-    
     //if ze e kee is held down then do a fire a boolet (if btimer is up) only if you have ammo
     if (btimer == 0 && ammo > 0) {
       //shoot to player?

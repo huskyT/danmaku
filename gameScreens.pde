@@ -11,8 +11,7 @@ void playScreen() {
   imageMode(CORNER);
   
   scrollHeight = longbg.height;
-  finalScore = playScore*difficulty;
-  println(playScore);
+  finalScore = playScore*difficulty*100;
   
   image(longbg, topX, botY-scrollHeight+currentScroll);
   image(longbg, topX, botY-scrollHeight+currentScroll-scrollHeight);
@@ -62,7 +61,7 @@ void playScreen() {
     obj.show();
     obj.move();
     if (obj.isDead()) {
-      playScore = playScore + obj.points;
+      playScore += engine.get(i).points;
       engine.remove(i);
     }
     i--;
@@ -72,6 +71,7 @@ void playScreen() {
   image(bg, width/2, height/2);
   
   displayFire();
+  displayScore();
 }
 
 void menuScreen() {

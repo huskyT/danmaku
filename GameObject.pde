@@ -3,7 +3,7 @@ abstract class GameObject {
   int wx, wy;
   PVector pos, vel, accel;
   int hp;
-  int points = 0;
+  int points;
   
   GameObject() {
     pos = new PVector(0, 0);

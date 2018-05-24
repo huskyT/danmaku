@@ -20,8 +20,7 @@ void displayScore() {
   fill(255);
   textSize(20);
   textAlign(CENTER);
-  text(finalScore, 527, 80);
-  println(finalScore);
+  text(nf(finalScore, 11), 527, 80);
 }
 
 void displayFire() {
@@ -38,5 +37,6 @@ void displayFire() {
   if(playerisdead) {
     textAlign(CENTER);
     text("Press R to Restart", 530, 420);
+    text("Press E to Exit", 530, 390);
   }
 }
