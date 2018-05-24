@@ -8,6 +8,8 @@ Gun gun;
     fireDelay = 60;
     btimer = fireDelay;
     ammo = 2;
+    vel.x = random(-1, 1);
+    vel.y = random(2,3);
   }
   
   void move() {
@@ -17,7 +19,7 @@ Gun gun;
     //if ze e kee is held down then do a fire a boolet (if btimer is up) only if you have ammo
     if (btimer == 0 && ammo > 0) {
       //shoot to player?
-      float angletoPlayer = atan((realPlayer.pos.x - pos.x)/(realPlayer.pos.y - pos.y))*(-1);
+      float angletoPlayer = atan2(realPlayer.pos.y-pos.y,realPlayer.pos.x - pos.x)-PI/2;
       gun.fanFireE(angletoPlayer, 2, PI/6); // Direction, bulletcount-1, cone of fire
       //Start the timer till next bullet can be fired (in frames)
       btimer = fireRate;
@@ -59,7 +61,7 @@ class BossOne extends Enemy {
   BossOne(int x, int y) {
     super(x, y, boss1, 45, 45);
     gun = new Gun();
-    hp = 200;
+    hp = 500;
     fireRate = 20;
     fireDelay = 50;
     btimer = fireDelay;
@@ -68,20 +70,21 @@ class BossOne extends Enemy {
     phasecount = 7;
     
     vel.x = 0;
-    vel.y = 0.1;
+    vel.y = 0;
   }
   
   void move() {
-    gun.pos.x = pos.x;
-    gun.pos.y = pos.y;
+    //Move down at 1 speed until it reaches 100
+    vel.y = 0;
+    if (pos.y < 100) {
+      vel.y = 1;
+    }
     
-    if (pos.x<topX || pos.x>botX) vel.x = vel.x*(-1);
-    if (pos.y<topY || pos.y>botY) vel.y = vel.y*(-1);
-    
-    
-    
+    //Move the boss and the gun.
     pos.add(vel);
     vel.add(accel);
+    gun.pos.x = pos.x;
+    gun.pos.y = pos.y;
     shoot();
     
     //Test hitbox with stuff
@@ -109,10 +112,15 @@ class BossOne extends Enemy {
     if (btimer == 0) { 
       switch(phase) { //Depending on which phase, shoot a different thing from the gun
         case 1:
-          gun.fanFireE(angletoPlayer, 6, PI/3); // Direction, bulletcount-1, cone of fire
+          if (difficulty == 3) {
+            gun.fastFanE(0, 35, TWO_PI, ammo, PI/3); // Direction, bulletcount-1, cone of fire
+          }
+          else {
+            gun.fanFireE(angletoPlayer, 6, PI/3); // Direction, bulletcount-1, cone of fire
+          }
           break;
         case 2:
-          //Take a break :D
+          gun.fanFireE(angletoPlayer, 6, PI/3); // Direction, bulletcount-1, cone of fire
           break;
         case 3:
           gun.tinyFireE(angletoPlayer); // Direction, bulletcount-1, cone of fire
@@ -121,10 +129,10 @@ class BossOne extends Enemy {
           //Do nothing!
           break;
         case 5: //Fire which fans off
-          gun.fastFireE(-PI/4, ammo, PI/18);
+          gun.fastFireE(-PI/4, ammo, PI/18, 3);
           break;
         case 6: //fan off in other direction now
-          gun.fastFireE(PI/4, ammo, -PI/18);
+          gun.fastFireE(PI/4, ammo, -PI/18, 3);
           break;
         case 7:
           //idle
@@ -147,11 +155,12 @@ class BossOne extends Enemy {
     switch(phase) {
       case 1:
         ammo = 3;
-        fireRate = 40;
+        fireRate = 10;
         break;
       case 2:
         ammo = 1;
         fireRate = 120;
+        btimer = 50;
         break;
       case 3:
         ammo = 20;

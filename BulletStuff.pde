@@ -54,6 +54,6 @@ class TinyBall extends EnemyBullet { //small balls
 
 class EnemyShot1 extends EnemyBullet { //small balls
   EnemyShot1(float angle, float xpos, float ypos) {
-    super(angle, 5, cyanball, 15, 15, xpos, ypos, 1);
+    super(angle, 5, cyanball, 12, 12, xpos, ypos, 1);
   }
 }

@@ -1,5 +1,9 @@
 int scrollHeight;
 int currentScroll = 0;
+int currentStage = 1;
+Stage activeStage = new stageOne();
+int stageGap = 0;
+int difficulty = 3;
 
 void playScreen() {
   //Redraw background
@@ -18,7 +22,28 @@ void playScreen() {
   imageMode(CENTER);
   
   defaultDraw();
-  //rect(centX, centY, wid, hei);
+  
+  if (stageGap == 0) {
+    activeStage.move();
+  }
+  else stageGap -= 1;
+  
+  if (activeStage.complete == true) {
+    switch(currentStage) {
+      case 1:
+        activeStage = new stageTwo();
+        currentStage = 2;
+        stageGap = 180;
+        break;
+      case 2:
+        activeStage = new stageThree();
+        currentStage = 3;
+        stageGap = 120;
+        break;
+      case 3:
+        break;
+    }
+  }
   
   //Do a thing with every game object
   int i = engine.size()-1;
@@ -27,12 +52,11 @@ void playScreen() {
     obj.show();
     obj.move();
     if (obj.isDead()) {
+      
       engine.remove(i);
     }
     i--;
   }
-  
-  //if(frameCount%600==0) engine.add(new BossOne(int(random(topX, botX)), topY));
   
   //The overlay menu ish thing
   image(bg, width/2, height/2);
@@ -63,4 +87,7 @@ void resetGame() {
   realPlayer.pos.x = centX;
   realPlayer.pos.y = 300;
   realPlayer.iframes = 60;
+  
+  activeStage = new stageOne();
+  currentStage = 1;
 }

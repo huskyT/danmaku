@@ -1,6 +1,7 @@
 ArrayList<GameObject> engine;
 PImage bg;
-String currentScreen; //Use menu, game, help, instruction, 
+String currentScreen; //Use menu, game, help, instruction,
+int playScore;
 
 boolean upk, downk, rightk, leftk, zk, xk, shiftk;
 Player realPlayer;
@@ -94,5 +95,4 @@ void mouseClicked() {
     obj.action();
     z--;
   }
-  engine.add(new TestEnemy(mouseX, mouseY));
 }

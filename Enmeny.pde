@@ -15,9 +15,6 @@ class Enemy extends GameObject {
     sprite = _sprite;
     alivetime = 0;
     
-    vel.x = random(-2.5, 2.5);
-    vel.y = random(1, 3);
-    
     wx = _wx;
     wy = _wy;
     
