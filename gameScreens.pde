@@ -11,6 +11,8 @@ void playScreen() {
   imageMode(CORNER);
   
   scrollHeight = longbg.height;
+  finalScore = playScore*difficulty;
+  println(playScore);
   
   image(longbg, topX, botY-scrollHeight+currentScroll);
   image(longbg, topX, botY-scrollHeight+currentScroll-scrollHeight);
@@ -41,6 +43,14 @@ void playScreen() {
         stageGap = 120;
         break;
       case 3:
+        activeStage = new stageFour();
+        currentStage = 4;
+        stageGap = 120;
+        break;
+      case 4:
+        activeStage = new stageOne();
+        currentStage = 1;
+        stageGap = 240;
         break;
     }
   }
@@ -52,7 +62,7 @@ void playScreen() {
     obj.show();
     obj.move();
     if (obj.isDead()) {
-      playScore += obj.points;
+      playScore = playScore + obj.points;
       engine.remove(i);
     }
     i--;
@@ -90,4 +100,6 @@ void resetGame() {
   
   activeStage = new stageOne();
   currentStage = 1;
+  
+  playScore = 0;
 }

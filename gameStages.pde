@@ -23,7 +23,7 @@ class Stage {
 class stageOne extends Stage {
   stageOne() {
     complete = false;
-    totalEnemies = 2;
+    totalEnemies = 12;
     tillNext = 30;
     etimer = tillNext;
     bossStage = false;
@@ -58,6 +58,20 @@ class stageThree extends Stage {
     engine.add(new TestEnemy(int(random(topX, botX)), 0));
     engine.add(new TestEnemy(int(random(topX, botX)), 0));
     engine.add(new TestEnemy(int(random(topX, botX)), 0));
+  }
+}
+
+class stageFour extends Stage {
+  stageFour() {
+    complete = false;
+    totalEnemies = 3;
+    tillNext = 210;
+    etimer = tillNext;
+    bossStage = true;
+  }
+  void act() {
+    engine.add(new Enemy2(topX+100, 0));
+    engine.add(new Enemy2(botX-100, 0));
   }
 }
 

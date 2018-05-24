@@ -8,6 +8,8 @@ class Enemy extends GameObject {
   int fireRate, btimer; //Fire rate
   int ammo = 0; //number of bullets it fires
   int phase, phasecount;
+  int points = 100;
+  int tbonus, ogpoints;
   
   Enemy(int locx, int locy, PImage _sprite, int _wx, int _wy) {
     pos.x = locx;

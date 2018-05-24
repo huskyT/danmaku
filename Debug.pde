@@ -16,6 +16,14 @@ void displayFPS() {
   text(int(frameRate) + " FPS", 560, 470);
 }
 
+void displayScore() {
+  fill(255);
+  textSize(20);
+  textAlign(CENTER);
+  text(finalScore, 527, 80);
+  println(finalScore);
+}
+
 void displayFire() {
   rectMode(CORNER);
   noStroke();

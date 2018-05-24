@@ -13,7 +13,7 @@ http://github.com/huskyT
 ArrayList<GameObject> engine;
 PImage bg;
 String currentScreen; //Use menu, game, help, instruction,
-int playScore;
+int playScore, finalScore;
 
 boolean upk, downk, rightk, leftk, zk, xk, shiftk;
 Player realPlayer;
@@ -80,6 +80,9 @@ void keyPressed() {
       tFrames = tLength;
     }
   }
+  if (keyCode == '1') difficulty = 1;
+  if (keyCode == '2') difficulty = 2;
+  if (keyCode == '3') difficulty = 3;
 }
 
 void keyReleased() {

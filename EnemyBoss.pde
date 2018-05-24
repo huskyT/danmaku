@@ -5,8 +5,6 @@ class Boss extends Enemy {
     gun = new Gun();
     ammo = 0;
     phase = 0;
-    
-    points = 2000;
   }
   void move() {
     //Move the boss and the gun.
@@ -15,6 +13,7 @@ class Boss extends Enemy {
     gun.pos.x = pos.x;
     gun.pos.y = pos.y;
     shoot();
+    alivetime += 1;
     
     //Test hitbox with stuff
     int i = 0;
@@ -54,8 +53,9 @@ class BossOne extends Boss {
     vel.x = 0;
     vel.y = 0;
     
-    points = 2000;
-    //pointvalue = 2000;
+    points = 2300;
+    ogpoints = 1500;
+    tbonus = 800;
   }
   void shoot() {
     float angletoPlayer = atan2(realPlayer.pos.y-pos.y,realPlayer.pos.x - pos.x)-PI/2;
@@ -71,10 +71,15 @@ class BossOne extends Boss {
           }
           break;
         case 2:
-          gun.fanFireE(angletoPlayer, 6, PI/3); // Direction, bulletcount-1, cone of fire
+          if (difficulty >= 2) {
+            gun.tinyFanE(angletoPlayer, 6, PI/3); // Direction, bulletcount-1, cone of fire
+          }
           break;
         case 3:
-          gun.tinyFireE(angletoPlayer); // Direction, bulletcount-1, cone of fire
+          if (difficulty == 3) {
+            gun.tinyFanE(angletoPlayer, 2, PI/6);
+          }
+          else gun.tinyFireE(angletoPlayer);
           break;
         case 4:
           //Do nothing!
@@ -99,7 +104,6 @@ class BossOne extends Boss {
       if (phase > phasecount) phase = 1;
       loadGun(phase);
     }
-    println(phase + " this " + ammo);
   }
   
   void move() {
@@ -112,6 +116,9 @@ class BossOne extends Boss {
     gun.pos.x = pos.x;
     gun.pos.y = pos.y;
     shoot();
+    alivetime += 1;
+    
+    points = ogpoints + tbonus-alivetime/10;
     
     //Test hitbox with stuff
     int i = 0;
@@ -139,13 +146,23 @@ class BossOne extends Boss {
         fireRate = 10;
         break;
       case 2:
-        ammo = 1;
-        fireRate = 120;
+        if (difficulty == 3) {
+          ammo = 3;
+        }
+        else ammo = 1;
+        fireRate = 30;
         btimer = 50;
         break;
       case 3:
-        ammo = 20;
-        fireRate = 12;
+        if (difficulty == 1) {
+          ammo = 18;
+          fireRate = 16;
+        }
+        else {
+          ammo = 20;
+          fireRate = 12;
+        }
+        btimer = 40;
         break;
       case 4:
         ammo = 1;
@@ -162,6 +179,7 @@ class BossOne extends Boss {
       case 7:
         ammo = 1;
         fireRate = 120;
+        break;
     }
   }
 }

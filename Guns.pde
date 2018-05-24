@@ -35,6 +35,12 @@ class Gun extends GameObject {
     engine.add(new TinyBall(direction, pos.x, pos.y));
   }
   
+  void tinyFanE(float direction, int bulletCount, float aoe) {
+    for (int z=bulletCount; z>=0; z--) {
+      engine.add(new TinyBall(aoe/bulletCount*z-aoe/2+direction, pos.x, pos.y));
+    }
+  }
+  
   void fastFireE(float direction, int tilt, float tiltamount, int multi) {
     for (int i = 0; i < multi; i += 1) {
       engine.add(new EnemyShot1(direction + tilt*tiltamount-tiltamount*i, pos.x, pos.y));

@@ -1,4 +1,4 @@
-//Stuff the player will shoote
+ //Stuff the player will shoote
 class PlayerBullet extends Bullet {
 
   //Constructor
