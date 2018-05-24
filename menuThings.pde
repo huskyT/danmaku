@@ -1,4 +1,4 @@
-ArrayList<MenuButton> menu;
+  ArrayList<MenuButton> menu;
 
 void transition() {
   //Do the white transition here
@@ -67,7 +67,7 @@ class MenuButton{
   }
   
   boolean isHover() {
-    if (mouseX < this.pos.x - this.wx/2 + this.wx && this.pos.x - this.wx/2 < mouseX 
+    if (mouseX < this.pos.x + this.wx/2   && this.pos.x - this.wx/2 < mouseX 
     && mouseY < this.pos.y - this.wy/2 + this.wy 
     && this.pos.y-this.wy/2 < mouseY) return true;
     else return false;
