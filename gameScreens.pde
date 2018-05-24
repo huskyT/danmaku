@@ -52,7 +52,7 @@ void playScreen() {
     obj.show();
     obj.move();
     if (obj.isDead()) {
-      
+      playScore += obj.points;
       engine.remove(i);
     }
     i--;

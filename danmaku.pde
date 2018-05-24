@@ -1,3 +1,15 @@
+/*
+
+Created by Taesung Jung on 24.05.18.
+Copyright © 2018 Taesung Jung. All rights reserved.
+
+Version - BETA 1.7
+
+rex0355@gmail.com
+http://github.com/huskyT
+
+*/
+
 ArrayList<GameObject> engine;
 PImage bg;
 String currentScreen; //Use menu, game, help, instruction,

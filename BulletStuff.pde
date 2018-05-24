@@ -13,7 +13,7 @@ class PlayerBullet extends Bullet {
 
 class PlayerIce extends PlayerBullet {
   PlayerIce(float angle, float xpos, float ypos) {
-    super(angle, 10, blackstream, 32, 41, xpos, ypos, 1);
+    super(angle, 10, blackstream, 8, 34, xpos, ypos, 1);
   }
 }
 
