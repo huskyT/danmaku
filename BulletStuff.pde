@@ -46,9 +46,21 @@ class TinyRed extends EnemyBullet { //Small diamond projectile
   }
 }
 
+class TinyCyan extends EnemyBullet { //Small diamond projectile
+  TinyCyan(float angle, float xpos, float ypos) {
+    super(angle, 2, cyanshap, 8, 20, xpos, ypos, 1);
+  }
+}
+
 class TinyBall extends EnemyBullet { //small balls
   TinyBall(float angle, float xpos, float ypos) {
     super(angle, 4, redball, 15, 15, xpos, ypos, 1);
+  }
+}
+
+class SlowBall extends EnemyBullet { //small balls
+  SlowBall(float angle, float xpos, float ypos) {
+    super(angle, 1, purpleball, 15, 15, xpos, ypos, 1);
   }
 }
 

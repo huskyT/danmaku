@@ -30,9 +30,27 @@ class Gun extends GameObject {
       engine.add(new TinyRed(aoe/bulletCount*z-aoe/2+direction + tilt*tiltamount, pos.x, pos.y));
     }
   }
+  void fastFanF(float direction, int bulletCount, float aoe, int tilt, float tiltamount) {
+    for (int z=bulletCount; z>=0; z--) {
+      engine.add(new TinyCyan(aoe/bulletCount*z-aoe/2+direction + tilt*tiltamount, pos.x, pos.y));
+    }
+  }
+  
+  void slowFanE(float direction, int bulletCount, float aoe, int tilt, float tiltamount) {
+    for (int z=bulletCount; z>=0; z--) {
+      engine.add(new SlowBall(aoe/bulletCount*z-aoe/2+direction + tilt*tiltamount, pos.x, pos.y));
+    }
+  }
   
   void tinyFireE(float direction) {
     engine.add(new TinyBall(direction, pos.x, pos.y));
+  }
+  
+  void crossFireE(float direction, float tiltamount, int tilt) {
+    engine.add(new TinyBall(direction+tilt*tiltamount+PI/2, pos.x, pos.y));
+    engine.add(new TinyBall(direction-tilt*tiltamount+PI/2, pos.x, pos.y));
+    engine.add(new TinyBall(direction+tilt*tiltamount-PI/2, pos.x, pos.y));
+    engine.add(new TinyBall(direction-tilt*tiltamount-PI/2, pos.x, pos.y));
   }
   
   void tinyFanE(float direction, int bulletCount, float aoe) {

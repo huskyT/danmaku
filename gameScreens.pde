@@ -102,4 +102,5 @@ void resetGame() {
   currentStage = 1;
   
   playScore = 0;
+  bossDefeated = 0;
 }

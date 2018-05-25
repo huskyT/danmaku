@@ -42,7 +42,9 @@ class stageTwo extends Stage {
     bossStage = true;
   }
   void act() {
-    engine.add(new BossOne(int((topX+botX)/2), topY));
+    if (bossDefeated > 4) engine.add(new BossFinal(int((topX+botX)/2), topY));
+    else engine.add(new BossOne(int((topX+botX)/2), topY));
+    bossDefeated += 1;
   }
 }
 
