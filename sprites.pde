@@ -7,6 +7,8 @@ PImage jellyfish, enem2, boss1;
 PImage gamebg, menubg, longbg;
 PImage white;
 PImage indicator;
+PImage help1, help2, help3;
+PImage helpimage;
 
 void loadSprites() {
   psprite = loadImage("aseex/psprite.png"); //Player frame 1
@@ -33,8 +35,13 @@ void loadSprites() {
   white = loadImage("aseex/white.png");
   gamebg = loadImage("aseex/gamebg.png");
   menubg = loadImage("aseex/menubg.png");
+  helpimage = menubg;
   longbg = loadImage("aseex/longbg.png");
   scrollHeight = longbg.height;
+  
+  help1 = loadImage("aseex/help1.png");
+  help2 = loadImage("aseex/help2.png");
+  help3 = loadImage("aseex/help3.png");
   
   indicator = loadImage("aseex/redball.png");
   indicator.resize(6,6);

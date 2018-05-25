@@ -61,7 +61,7 @@ void playScreen() {
     obj.show();
     obj.move();
     if (obj.isDead()) {
-      playScore += engine.get(i).points;
+      if (playerisdead ==false) playScore += engine.get(i).points;
       engine.remove(i);
     }
     i--;
@@ -72,10 +72,20 @@ void playScreen() {
   
   displayFire();
   displayScore();
+  
+  //Test if high score has been beaten when the player dies
+  if (playerisdead) {
+    println(playScore + " vs the " + highscore);
+    if (finalScore > highscore) {
+      highscore = finalScore;
+      String[] temphs = split(str(highscore), ' ');
+      saveStrings("hs/hs.txt", temphs);
+    }
+  }
 }
 
 void menuScreen() {
-  background(menubg);
+  image(helpimage,width/2,height/2);
   int z = menu.size()-1;
   while (z >= 0) {
     MenuButton obj = menu.get(z); //This can represent a thing
@@ -102,5 +112,4 @@ void resetGame() {
   currentStage = 1;
   
   playScore = 0;
-  bossDefeated = 0;
 }

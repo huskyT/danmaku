@@ -7,12 +7,17 @@ void displayCoords() {
   textAlign(CENTER);
   textSize(12);
   text(mouseX +", "+ mouseY, 596, 19);
+  if (lunaticMode) {
+    text("Lunatic", 560, 455);
+  }
 }
 
 void displayFPS() {
   fill(255);
   textSize(20);
   textAlign(CENTER);
+  if (lunaticMode) fill(255,144,144);
+  else fill(255);
   text(int(frameRate) + " FPS", 560, 470);
 }
 
@@ -20,7 +25,8 @@ void displayScore() {
   fill(255);
   textSize(20);
   textAlign(CENTER);
-  text(nf(finalScore, 11), 527, 80);
+  text("HScor: " + nf(highscore, 9), 527, 76);
+  text("Score: " + nf(finalScore, 9), 527, 102);
 }
 
 void displayFire() {

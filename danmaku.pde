@@ -10,11 +10,12 @@ http://github.com/huskyT
 
 */
 
+int highscore;
 ArrayList<GameObject> engine;
 PImage bg;
 String currentScreen; //Use menu, game, help, instruction,
 int playScore, finalScore;
-int bossDefeated;
+boolean lunaticMode;
 
 boolean upk, downk, rightk, leftk, zk, xk, shiftk;
 Player realPlayer;
@@ -52,6 +53,9 @@ void setup() {
   frameRate(60);
   
   currentScreen = "menu";
+  String[] temphs = loadStrings("hs/hs.txt");
+  highscore = int(temphs[0]);
+  println(highscore);
 }
 
 void draw() {
@@ -95,6 +99,11 @@ void keyReleased() {
   if (keyCode == RIGHT) rightk = false;
   if (keyCode == LEFT) leftk = false;
   if (keyCode == SHIFT) shiftk = false;
+  if (key == 'L' || key == 'l') lunaticMode = ! lunaticMode;
+  if ((key == 'E' || key == 'e')&& playerisdead) { 
+    currentScreen = "menu";
+    menuSwitch(1);
+  }
 }
 
 //Default color etc

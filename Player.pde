@@ -26,7 +26,7 @@ class Player extends GameObject {
     bleft = 0;
     
     //Special Timer
-    atimer = 6;
+    atimer = 600;
     aleft = 0;
   }
 

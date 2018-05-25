@@ -1,4 +1,4 @@
-  ArrayList<MenuButton> menu;
+ArrayList<MenuButton> menu;
 
 void transition() {
   //Do the white transition here
@@ -83,22 +83,27 @@ void menuSwitch(int screen) {
   //Then add the new bootons based on waht the screen value is.
   switch(screen) {
     case(1): //Initial Screen
-    menu.add(new MenuButton("Start Game", 30, 120, "menuSwitch", 2, 320, 200));
-    menu.add(new MenuButton("Information", 30, 120, "menuSwitch", 3, 320, 260));
+    menu.add(new MenuButton("Start Game", 40, 160, "menuSwitch", 2, 320, 200));
+    menu.add(new MenuButton("Information", 40, 160, "menuSwitch", 3, 320, 270));
+    helpimage = menubg;
     break;
     case(2): //the 2nd menu Screen
     menu.add(new MenuButton("Easy", 40, 175, "resetGame", 1, 320, 180));
     menu.add(new MenuButton("Kinda Easy", 40, 175, "resetGame", 2, 320, 260));
-    menu.add(new MenuButton("Lunatic (Recommended)", 40, 175, "resetGame", 3, 320, 340));
+    menu.add(new MenuButton("Normal", 40, 175, "resetGame", 3, 320, 340));
+    helpimage = menubg;
     break;
     case(3): //the 2nd menu Screen
-    menu.add(new MenuButton("Next", 30, 120, "menuSwitch", 1, 320, 200));
+    menu.add(new MenuButton("Next", 30, 120, "menuSwitch", 4, 320, 450));
+    helpimage = help1;
     break;
     case(4): //the 2nd menu Screen
-    menu.add(new MenuButton("Next", 30, 120, "menuSwitch", 1, 320, 200));
+    menu.add(new MenuButton("Next", 30, 120, "menuSwitch", 5, 320, 450));
+    helpimage = help2;
     break;
     case(5): //the 2nd menu Screen
-    menu.add(new MenuButton("Next", 30, 120, "menuSwitch", 1, 320, 200));
+    menu.add(new MenuButton("Return", 30, 120, "menuSwitch", 1, 320, 450));
+    helpimage = help3;
     break;
   }
 }
