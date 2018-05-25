@@ -101,6 +101,7 @@ void resetGame() {
     i--;
   }
   realPlayer.hp = realPlayer.maxhp;
+  realPlayer.aleft = 0;
   engine.add(realPlayer);
   playerisdead = false;
   
