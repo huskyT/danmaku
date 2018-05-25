@@ -2,11 +2,11 @@ void displayCoords() {
   fill(255);
   rectMode(CENTER);
   noStroke();
-  rect(596, 15, 66, 15);
+  //rect(596, 15, 66, 15);
   fill(200,125,130);
   textAlign(CENTER);
   textSize(12);
-  text(mouseX +", "+ mouseY, 596, 19);
+  //text(mouseX +", "+ mouseY, 596, 19);
   if (lunaticMode) {
     text("Lunatic", 560, 455);
   }
